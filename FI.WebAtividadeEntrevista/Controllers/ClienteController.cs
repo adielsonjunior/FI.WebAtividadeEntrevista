@@ -158,16 +158,25 @@ namespace WebAtividadeEntrevista.Controllers
         {
             try
             {
-                string mensagem = "";
-                var clienteEncontrado = new BoCliente().Consultar(idCliente);
-                if (clienteEncontrado.CPF == cpf && clienteEncontrado.Id == idCliente)
+                string mensagem = "Cliente já cadastrado no banco de dados.";
+
+                if (idCliente == 0)
                 {
-                    mensagem = "";
+                    var cpfEncontrado = new BoCliente().VerificarExistencia(cpf);
+                    if (!cpfEncontrado) {
+                        mensagem = "";
+                    }
                 }
                 else {
-                    mensagem = "Cliente já cadastrado no banco de dados.";
-                }
+                    var clienteEncontrado = new BoCliente().Consultar(idCliente);
 
+                    if (clienteEncontrado.CPF == cpf && clienteEncontrado.Id == idCliente)
+                    {
+                        mensagem = "";
+                    }
+
+                }
+                
                 return Json(new { Message = mensagem});
             }
             catch (Exception ex)

@@ -19,11 +19,15 @@ $(document).ready(function () {
 });
 
 
-
 function VerificarCPFDublicado(cpf) {
     cpf = cpf.replace(/[^\d]+/g, '');
-    var url_atual_cliente = window.location.href;    
-    var idCliente = url_atual_cliente.substring(url_atual_cliente.lastIndexOf("/") + 1);
+    let url_atual_cliente = window.location.href;    
+    let idCliente = url_atual_cliente.substring(url_atual_cliente.lastIndexOf("/") + 1);
+
+    if (!$.isNumeric(idCliente)) {
+        idCliente = 0;
+    }
+
 
     $.ajax({
         url: '../../Cliente/VerificarCPFDublicado',
