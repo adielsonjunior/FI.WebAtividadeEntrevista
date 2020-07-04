@@ -14,16 +14,23 @@ $('#formCadastro #CPF').blur(function () {
 
 });
 
+$(document).ready(function () {
+    $("#CPF").mask("999.999.999-99");
+});
+
 
 
 function VerificarCPFDublicado(cpf) {
-    debugger;
+    cpf = cpf.replace(/[^\d]+/g, '');
+    var url_atual_cliente = window.location.href;    
+    var idCliente = url_atual_cliente.substring(url_atual_cliente.lastIndexOf("/") + 1);
 
     $.ajax({
         url: '../../Cliente/VerificarCPFDublicado',
         method: "POST",
         data: {
-            "CPF": cpf
+            "CPF": cpf,
+            "idCliente": idCliente
         },
         error:
             function (r) {

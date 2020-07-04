@@ -10,6 +10,7 @@
     </script>
     @Scripts.Render("~/bundles/listClientes")
     @Scripts.Render("~/bundles/validarCPFCliente")
+    @Scripts.Render("~/bundles/jquery-mask")
 }
 <h2>@Html.Raw(ViewBag.Title)</h2>
 @Html.ActionLink("Novo Cliente", "Incluir", "Cliente", new { }, new { @class = "btn btn-sm btn-primary pull-right" })

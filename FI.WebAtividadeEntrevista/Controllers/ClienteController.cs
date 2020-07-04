@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FI.AtividadeEntrevista.DML;
+using System.Diagnostics.Eventing.Reader;
+using Microsoft.Ajax.Utilities;
+using System.Web.Configuration;
 
 namespace WebAtividadeEntrevista.Controllers
 {
@@ -151,14 +154,17 @@ namespace WebAtividadeEntrevista.Controllers
         }
 
         [HttpPost]
-        public JsonResult VerificarCPFDublicado(string cpf)
+        public JsonResult VerificarCPFDublicado(string cpf, long idCliente)
         {
             try
             {
                 string mensagem = "";
-                var clienteEncontrado = new BoCliente().VerificarExistencia(cpf);
-                if (clienteEncontrado)
+                var clienteEncontrado = new BoCliente().Consultar(idCliente);
+                if (clienteEncontrado.CPF == cpf && clienteEncontrado.Id == idCliente)
                 {
+                    mensagem = "";
+                }
+                else {
                     mensagem = "Cliente já cadastrado no banco de dados.";
                 }
 
