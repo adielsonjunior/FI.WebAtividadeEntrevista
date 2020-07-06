@@ -1,101 +1,161 @@
 ﻿
-    <form id="formCadastro" method="post">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Nome">Nome:</label>
-                    <input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João" maxlength="50">
-                </div>
+<form id="formCadastro" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João" maxlength="50">
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Sobrenome">Sobrenome:</label>
-                    <input required="required" type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Ex.: da Silva" maxlength="255">
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Sobrenome">Sobrenome:</label>
+                <input required="required" type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Ex.: da Silva" maxlength="255">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CPF">CPF:</label>
+                <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 000.000.000-00" maxlength="15">
+                <div id="mensagem-erro-cpf" style="color:red">
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Nacionalidade">Nacionalidade:</label>
+                <input required="required" type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Ex.: brasileira" maxlength="50">
+            </div>
+        </div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="CPF">CPF:</label>
-                    <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 000.000.000-00" maxlength="15">
-                    <div id="mensagem-erro-cpf" style="color:red">
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="CEP">CEP:</label>
+                <input required="required" type="text" class="form-control" id="CEP" name="CEP" placeholder="Ex.: 01011-100" maxlength="9">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Estado">Estado:</label>
+                <select required="required" id="Estado" class="form-control" name="Estado">
+                    <option value="">Selecione</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="PE">Pernambuco</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Cidade">Cidade:</label>
+                <input required="required" type="text" class="form-control" id="Cidade" name="Cidade" maxlength="50" placeholder="Ex.: São Paulo">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="Logradouro">Logradouro:</label>
+                <input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" placeholder="Ex.: Rua Boa Vista 253" maxlength="500">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Email">E-mail:</label>
+                <input required="required" type="text" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Telefone">Telefone:</label>
+                <input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Ex.: (11) 2020-3030" maxlength="15">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-left">
+                <span class="btn btn-sm btn-default" id="btn-partial-beneficiarios" data-toggle="modal" data-target="#partial-beneficiarios">Beneficiario</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-sm btn-success" id="btn-salvar">Salvar</button>
+                @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+
+<!-- Modal -->
+<div class="modal fade" id="partial-beneficiarios" tabindex="-1" role="dialog" aria-labelledby="partial-beneficiarios" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Beneficiários</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="CPF-beneficiario">Nome:</label>
+                            <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 000.000.000-00" maxlength="15">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group col-md-6">
+                            <label for="Nome-beneficiario">Nome:</label>
+                            <input required="required" type="text" class="form-control" id="Nome-beneficiario" name="Nome-beneficiario" placeholder="Ex.:João" maxlength="255">
+                        </div>
+                        <div class="col-md-2">
+                            <span class="btn btn-sm btn-default" id="btn-beneficiarios-incluir">Incluir</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Nacionalidade">Nacionalidade:</label>
-                    <input required="required" type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Ex.: brasileira" maxlength="50">
+                <hr />
+                <div id="lst-beneficiarios">
+                    <table id="tbl-beneficiarios">
+                        <tr>
+                            <th>CPF</th>
+                            <th>Nome</th>
+                        </tr>
+                        <tr>
+                            <td>000.000.000-72</td>
+                            <td>Adielson dos santos Junior</td>
+                            <td>
+                                <span class="btn btn-sm btn-default" id="btn-beneficiarios-alterar">Alterar</span>
+                                <span class="btn btn-sm btn-default" id="btn-beneficiarios-excluir">Excluir</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>xxx.xxx.xxx-69</td>
+                            <td>Junior dos santos Junior</td>
+                            <td>
+                                <span class="btn btn-sm btn-default" id="btn-beneficiarios-alterar">Alterar</span>
+                                <span class="btn btn-sm btn-default" id="btn-beneficiarios-excluir">Excluir</span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
 
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="CEP">CEP:</label>
-                    <input required="required" type="text" class="form-control" id="CEP" name="CEP" placeholder="Ex.: 01011-100" maxlength="9">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="Estado">Estado:</label>
-                    <select required="required" id="Estado" class="form-control" name="Estado">
-                        <option value="">Selecione</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="PE">Pernambuco</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="Cidade">Cidade:</label>
-                    <input required="required" type="text" class="form-control" id="Cidade" name="Cidade" maxlength="50" placeholder="Ex.: São Paulo">
-                </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="Logradouro">Logradouro:</label>
-                    <input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" placeholder="Ex.: Rua Boa Vista 253" maxlength="500">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Email">E-mail:</label>
-                    <input required="required" type="text" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Telefone">Telefone:</label>
-                    <input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Ex.: (11) 2020-3030" maxlength="15">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pull-left">
-                    <span class="btn btn-sm btn-default" id="btn-salvar">Beneficiários</span>                   
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-sm btn-success" id="btn-salvar">Salvar</button>
-                    @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
-                </div>
-            </div>
-        </div>
-
-
-    </form>
+    </div>
+</div>
